@@ -13,15 +13,17 @@ class CommentsController extends Controller
             'comment' => 'required|max:255',
         ]);
         
-//        var_dump($request);
-//        exit;
-        
 //        $request->message()->comments()->create([
 //            'comment' => $request->comment,
 //        ]);
         
+        if($request->name == "") {
+            $request->name = '匿名さん';
+        }
+        
         $comment = new Comment();
         $comment->message_id = $request->message_id;
+        $comment->name = $request->name;
         $comment->comment    = $request->comment;
         $comment->save();
      

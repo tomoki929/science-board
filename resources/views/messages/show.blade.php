@@ -17,7 +17,7 @@
             @if (count($comments) > 0)
                 @foreach ($comments as $comment)
                     <div class="panel-heading">
-                      名前：匿名希望<span class="text-muted"></span><span class="pull-right"></span>
+                      名前：{{ $comment->name }}<span class="text-muted"></span><span class="pull-right"></span>
                     </div>
                     <div class="panel-body">
                         <img src="" />
@@ -31,6 +31,9 @@
         {!! Form::open(['route' => 'comments.store']) !!}             
             <?php $message_id = $message->id; ?>
             {!! Form::hidden('message_id', $message_id) !!}
+            {!! Form::label('name', '名前:') !!}<br>
+            {!! Form::text('name') !!}<br>
+            {!! Form::label('comment', 'コメント欄:') !!}
             {!! Form::textarea('comment') !!}<br>
             {!! Form::submit('投稿') !!}
         {!! Form::close() !!}
@@ -38,7 +41,7 @@
         <div class="clearfix"></div>
     </div>
     <style>
-        textarea {
+        input[type='text'], textarea {
             width: 100%;
         }
     </style>
