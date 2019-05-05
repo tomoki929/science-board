@@ -25,9 +25,11 @@ class MessagesController extends Controller
     public function show($id)
     {
         $message = Message::find($id);
+        $comments = $message->comments()->orderBy('created_at', 'desc')->get();
 
         return view('messages.show', [
             'message' => $message,
+            'comments' => $comments,
         ]);
     }
     

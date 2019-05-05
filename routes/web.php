@@ -14,3 +14,4 @@
 Route::get('/', 'MessagesController@index');
 
 Route::resource('messages', 'MessagesController');
+Route::resource('comments', 'CommentsController');

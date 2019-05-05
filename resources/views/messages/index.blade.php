@@ -1,17 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <h1>メッセージ一覧</h1>
-
-    @if (count($messages) > 0)
-        <ul>
+                        
+    <div class="board-heading">
+        <h2 class="board-title">部屋一覧</h2>
+        {!! link_to_route('messages.create', '＋作成', null, ['class' => 'btn board-heading-btn']) !!}
+    </div>
+    <div class="board-body">
+        @if (count($messages) > 0)
             @foreach ($messages as $message)
-                <li>{!! link_to_route('messages.show', $message->id, ['id' => $message->id]) !!} : {{ $message->content }}</li>
+                <a href='/messages/{{$message->id}}' class="article-box" style="background-color: white;">
+                    <h3 class="title">{{ $message->content }}</h3>
+                    <time class="date" datetime="" style="">コメント数・最終投稿<span></span></time>
+                    <img class="image" src="/img/science.jpg" width="100px" height="100px" alt="コーディング画面">
+                </a>
             @endforeach
-        </ul>
-    @endif
-    
-    {!! link_to_route('messages.create', '新規メッセージの投稿') !!}
+        @endif
+        <div class="clearfix"></div>
+    </div>
 
 @endsection
