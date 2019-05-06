@@ -3,7 +3,7 @@
 @section('content')
                         
     <div class="board-heading">
-        <h2 class="board-title">部屋一覧</h2>
+        <h2 class="board-title">{{ $message->content }}</h2>
         <a href="/" class="btn board-heading-btn"> ↩ 戻る</a>
     </div>
     <div class="board-body">
@@ -17,7 +17,7 @@
             @if (count($comments) > 0)
                 @foreach ($comments as $comment)
                     <div class="panel-heading">
-                      名前：{{ $comment->name }}<span class="text-muted"></span><span class="pull-right"></span>
+                      名前：<span class="text-muted">{{ $comment->name }}</span><span class="pull-right">投稿日時：{{ $comment->created_at }}</span>
                     </div>
                     <div class="panel-body">
                         <img src="" />

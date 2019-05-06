@@ -16,21 +16,32 @@ class MessagesController extends Controller
     public function index()
     {
         $messages = Message::all();
+        
+        foreach($messages as $message){
+            $count_comments = $this->counts($message);
+            $message = $message->toArray();
+            $message += $count_comments;
+            $messages_array[] = $message;
+        }
 
-        return view('messages.index', [
-            'messages' => $messages,
-        ]);
+        $data = [
+            'messages' => $messages_array,
+        ];
+
+        return view('messages.index', $data);
     }
     
     public function show($id)
     {
         $message = Message::find($id);
         $comments = $message->comments()->orderBy('created_at', 'desc')->get();
-
-        return view('messages.show', [
+        
+        $data = [
             'message' => $message,
             'comments' => $comments,
-        ]);
+        ];
+
+        return view('messages.show', $data);
     }
     
     public function create()

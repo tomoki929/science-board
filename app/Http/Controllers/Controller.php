@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public function counts($message) {
+        $count_comments = $message->comments()->count();
+        
+        return [
+            'count_comments' => $count_comments,
+        ];
+    }
 }
