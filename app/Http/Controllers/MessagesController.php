@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Message;
+use App\View;
 
 class MessagesController extends Controller
 {
@@ -15,17 +16,25 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at', 'DESC')->paginate(10);
         
         foreach($messages as $message){
+            if(  View::where("message_id", $message->id)->exists() ){
+                $views = View::where('message_id', $message->id)->first()->toArray();
+                $count_views = [ 'count_views' => $views['count_views'] ]; 
+            } else {
+                $count_views = [ 'count_views' => 0 ];
+            }
             $count_comments = $this->counts($message);
             $message = $message->toArray();
             $message += $count_comments;
-            $messages_array[] = $message;
+            $message += $count_views;
+            $messages_array[] = $message;         
         }
 
         $data = [
-            'messages' => $messages_array,
+            'messages' => $messages,
+            'messages_array' => $messages_array,
         ];
 
         return view('messages.index', $data);
@@ -33,6 +42,19 @@ class MessagesController extends Controller
     
     public function show($id)
     {
+        // 閲覧数の更新
+        if(  View::where("message_id", $id)->exists() ) {
+            $view = View::where('message_id', $id)->first();
+            $view->count_views = $view->count_views + 1;
+            $view->save();
+        } else {
+            $view = new View();
+            $view->message_id = $id;
+            $view->count_views = 1;
+            $view->save();
+        }
+
+        
         $message = Message::find($id);
         $comments = $message->comments()->orderBy('created_at', 'desc')->get();
         

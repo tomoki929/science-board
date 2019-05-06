@@ -8,15 +8,19 @@
     </div>
     <div class="board-body">
         @if (count($messages) > 0)
-            @foreach ($messages as $message)
+            @foreach ($messages_array as $message)
                 <a href='/messages/{{$message['id']}}' class="article-box" style="background-color: white;">
                     <h3 class="title">{{ $message['content'] }}</h3>
-                    <time class="date" datetime="" style="">コメント数:<span class='badge'>{{ $message['count_comments'] }}</span></time>
+                    <time class="date" datetime="" style="">
+                        <div style='padding-left:10px;text-align:left'>コメント数：<span style='color:white;font-weight:bold;'>{{ $message['count_comments'] }}</span></div>
+                        <div style='padding-left:10px;text-align:left'>閲覧数：<span style='color:white;font-weight:bold;'>{{ $message['count_views'] }}</span></div>
+                    </time>
                     <img class="image" src="/img/science.jpg" width="100px" height="100px" alt="コーディング画面">
                 </a>
             @endforeach
         @endif
         <div class="clearfix"></div>
+        <div style="text-align:center;font-size:10px">{{ $messages->links() }}</div>
     </div>
 
 @endsection
