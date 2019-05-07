@@ -15,7 +15,7 @@
                         <div style='padding-left:10px;text-align:left'>コメント数：<span style='color:white;font-weight:bold;'>{{ $message['count_comments'] }}</span></div>
                         <div style='padding-left:10px;text-align:left'>閲覧数：<span style='color:white;font-weight:bold;'>{{ $message['count_views'] }}</span></div>
                     </time>
-                    <?php if($message['image_name']==''){ $message['image_name']='science.jpg'; } ?>
+                    <?php $message['image_name']='science.jpg'; ?>
                     <img class="image" src="{{ asset('storage/img/' .  $message['image_name']) }}" width="100px" height="100px" alt="コーディング画面">
                 </a>
             @endforeach
