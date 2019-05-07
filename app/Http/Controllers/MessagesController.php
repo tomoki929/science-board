@@ -58,7 +58,7 @@ class MessagesController extends Controller
 
         
         $message = Message::find($id);
-        $comments = $message->comments()->orderBy('created_at', 'desc')->get();
+        $comments = $message->comments()->orderBy('created_at', 'asc')->get();
         
         $data = [
             'message' => $message,
@@ -79,12 +79,11 @@ class MessagesController extends Controller
     
     public function store(Request $request)
     {
-//        $filename = $request->file->store('public/img');
+        $filename = $request->file->store('public/img');
         
         $message = new Message;
         $message->content = $request->content;
-//        $message->image_name = basename($filename);
-        $message->image_name = 'test';
+        $message->image_name = basename($filename);
         $message->save();
 
         return redirect('/');

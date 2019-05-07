@@ -9,6 +9,8 @@
         {!! Form::open(['route' => 'messages.store', 'method' => 'post', 'files' => true]) !!}        
             <h5>部屋名：</h5>
             {!! Form::textarea('content', null) !!}
+            <h5>画像：</h5>
+            {!! Form::file('file') !!}<br>
             {!! Form::submit('作成', ['class' => 'btn']) !!}
         {!! Form::close() !!}
     </div>
