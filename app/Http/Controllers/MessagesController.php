@@ -18,6 +18,8 @@ class MessagesController extends Controller
     {
         $messages = Message::orderBy('created_at', 'DESC')->paginate(10);
         
+        $messages_array = [];
+        
         foreach($messages as $message){
             if(  View::where("message_id", $message->id)->exists() ){
                 $views = View::where('message_id', $message->id)->first()->toArray();
