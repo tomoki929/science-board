@@ -3,12 +3,14 @@
 @section('content')
 
     <div class="board-heading">
-        <h1>部屋を作る</h1>
+        <h2>部屋を作る</h2>
     </div>
     <div class="board-body">
-        {!! Form::model($message, ['route' => 'messages.store']) !!}
-            <h3>部屋名：</h3>
+        {!! Form::open(['route' => 'messages.store', 'method' => 'post', 'files' => true]) !!}        
+            <h5>部屋名：</h5>
             {!! Form::textarea('content', null) !!}
+            <h5>画像：</h5>
+            {!! Form::file('file') !!}<br>
             {!! Form::submit('作成', ['class' => 'btn']) !!}
         {!! Form::close() !!}
     </div>

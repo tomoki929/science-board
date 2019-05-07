@@ -79,9 +79,11 @@ class MessagesController extends Controller
     
     public function store(Request $request)
     {
+        $filename = $request->file->store('public/img');
+        
         $message = new Message;
         $message->content = $request->content;
-        $message->image_name = 'test';
+        $message->image_name = basename($filename);
         $message->save();
 
         return redirect('/');
