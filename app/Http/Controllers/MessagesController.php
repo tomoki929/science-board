@@ -84,6 +84,7 @@ class MessagesController extends Controller
         $message = new Message;
         $message->content = $request->content;
 //        $message->image_name = basename($filename);
+        $message->image_name = 'test';
         $message->save();
 
         return redirect('/');
