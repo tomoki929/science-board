@@ -21,8 +21,9 @@
                       名前：<span class="text-muted">{{ $comment->name }}</span><span class="pull-right">投稿日時：{{ $comment->created_at }}</span>
                     </div>
                     <div class="panel-body">
-                        <?php if( $comment->image_name == '' ) { $comment->image_name = ''; } ?>
+                        <?php if( $comment->image_name !== '' ) { ?>
                         <img class="image" src="{{ asset('storage/img/' .  $comment->image_name) }}" width="200px" height="200px" alt="画像無し">
+                        <?php } ?>
                         <p>{{ $comment->comment }}</p>
                     </div>
                 @endforeach
