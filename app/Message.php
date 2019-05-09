@@ -12,4 +12,12 @@ class Message extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    
+    /**
+     * ユーザーに関連する電話レコードを取得
+     */
+    public function count_comment()
+    {
+        return $this->hasOne('App\Count_comment');
+    }
 }

@@ -13,5 +13,7 @@
 
 Route::get('/', 'MessagesController@index');
 
+Route::get('/messages/search', 'SearchController@index');
+
 Route::resource('messages', 'MessagesController');
 Route::resource('comments', 'CommentsController');

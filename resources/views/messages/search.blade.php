@@ -28,7 +28,7 @@
     <!--↑↑ 検索フォーム ↑↑-->
                         
     <div class="board-heading">
-        <h2 class="board-title">部屋一覧（コメント順）</h2>
+        <h2 class="board-title">部屋一覧（タイムライン）</h2>
         {!! link_to_route('messages.create', '＋作成', null, ['class' => 'btn board-heading-btn']) !!}
     </div>
     <div class="board-body">
