@@ -22,6 +22,7 @@
     </head>
 
     <body>
+        @include('commons.navbar')
         @include('commons.board')
     </body>
 </html>

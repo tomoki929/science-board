@@ -17,3 +17,6 @@ Route::get('/messages/search', 'SearchController@index');
 
 Route::resource('messages', 'MessagesController');
 Route::resource('comments', 'CommentsController');
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');

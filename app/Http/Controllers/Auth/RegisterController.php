@@ -36,6 +36,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        // guestとはログイン認証されていない閲覧者
+        // ログインしているなら指定のリダイレクト先に飛ばされる
         $this->middleware('guest');
     }
 

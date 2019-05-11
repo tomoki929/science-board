@@ -34,6 +34,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // guestはログイン認証されていない者という意味
+        // guest以外は指定パス($redirectTo)へ飛ばされる
         $this->middleware('guest')->except('logout');
     }
 }
