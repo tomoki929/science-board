@@ -3,29 +3,16 @@
 @section('content')
 
     <div class="p-home_menu pt-1">
-        <a class="btn p-home_menuItem p-1 pl-2 pl-1@s mb-1 p-home_menuItem-active" style='text-align:center;' href="/messages/search">
+        <a class="btn p-home_menuItem p-1 pl-2 mb-1 p-home_menuItem-active" style='text-align:center;' href="/messages/search">
             <span class="fa fa-fw fa-list-ul mr-1of2"></span>タイムライン
         </a>
-        <a class="btn p-home_menuItem p-1 pl-2 pl-1@s mb-1" href="/">
+        <a class="btn p-home_menuItem p-1 pl-2 p mb-1" href="/">
             <span class="fa fa-fw fa-list-ul mr-1of2"></span>コメント順
         </a>
-        <a class="btn p-home_menuItem p-1 pl-2 pl-1@s mb-1" href="#">
-            <span class="fa fa-fw fa-tags mr-1of2"></span>タグフィード
+        <a class="btn p-home_menuItem p-1 pl-2 mb-1" href="/categories">
+            <span class="fa fa-fw fa-tags mr-1of2"></span>カテゴリ
         </a>
     </div>
-
-    <!--↓↓ 検索フォーム ↓↓-->
-    <div style="padding:20px 0; padding-left:0px;">
-        <form action="{{url('/messages')}}">
-            <div class="form-group" style="text-align: center;">
-                <input type="text" name="keyword" value="{{$keyword}}" class="form-control" style="width: 80%;margin:0 auto;" placeholder="部屋名を検索してください">
-            </div>
-            <div style="text-align: center;">
-                <input type="submit" value="検索" class="btn" style="width:40%;">
-            </div>
-        </form>
-    </div>
-    <!--↑↑ 検索フォーム ↑↑-->
                         
     <div class="board-heading">
         <h2 class="board-title">部屋一覧（コメント順）</h2>

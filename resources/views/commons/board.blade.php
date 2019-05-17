@@ -1,5 +1,3 @@
-<a href="/" class="channel_name">科学ちゃんねる</a>
-    
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
@@ -13,6 +11,6 @@
                     </div>
                 </div>
             </main>
-        </div>            
+        </div>
     </div>
 </div>

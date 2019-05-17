@@ -35,9 +35,9 @@
             <?php $message_id = $message->id; ?>
             {!! Form::hidden('message_id', $message_id) !!}
             {!! Form::label('name', '名前:') !!}<br>
-            {!! Form::text('name') !!}<br>
+            {!! Form::text('name', old('name')) !!}<br>
             {!! Form::label('comment', 'コメント欄:') !!}
-            {!! Form::textarea('comment') !!}<br>
+            {!! Form::textarea('comment' , old('comment')) !!}<br>
             {!! Form::label('comment', '画像:') !!}
             {!! Form::file('file') !!}<br>
             {!! Form::submit('投稿') !!}

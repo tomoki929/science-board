@@ -10,6 +10,7 @@
             <div class='col-md-6 col-md-offset-3'>
 
                 {!! Form::open(['route' => 'login.post']) !!}
+                    {!! csrf_field() !!}
                     <div class='form-group'>
                         {!! Form::label('email', 'メールアドレス') !!}
                         {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
@@ -22,7 +23,7 @@
                     {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
                 {!! Form::close() !!}
 
-                <p>{!! link_to_route('login', '新規登録はこちら') !!}</p>
+                <p>{!! link_to_route('signup.get', '新規登録はこちら') !!}</p>
             </div>
         </div>
         <div class="clearfix" style='margin-bottom: 20px'></div>

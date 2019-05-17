@@ -8,6 +8,13 @@ use App\Comment;
 
 class Message extends Model
 {
+    protected $fillable = ['image_name','content', 'user_id'];
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function comments()
     {
         return $this->hasMany(Comment::class);

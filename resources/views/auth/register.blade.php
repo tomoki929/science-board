@@ -10,6 +10,7 @@
             <div class='col-md-6 col-md-offset-3'>
 
                 {!! Form::open(['route' => 'signup.post']) !!}
+                    {!! csrf_field() !!}
                     <div class='form-group'>
                         {!! Form::label('name', '名前') !!}
                         {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}

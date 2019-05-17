@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
+use App\Categorie;
 
 class SearchController extends Controller
 {
@@ -35,5 +36,36 @@ class SearchController extends Controller
         ];
 
         return view('messages.search', $data);
+    }
+    
+    public function search()
+    {
+        
+        $categories = Categorie::all();
+        
+        $data = [
+            'categories' => $categories
+        ];
+      
+        return view('categories.search', $data);
+    }
+    
+    public function result($id)
+    {        
+        $category = Categorie::where('id', $id)->first();
+        
+        $messages = Message::where('category_id', $id)
+                        ->join('views', 'messages.id', '=', 'views.message_id')
+                        ->join('count_comments', 'messages.id', '=', 'count_comments.message_id')
+                        ->orderBy('count_comments', 'desc')
+                        ->select('messages.id','content','image_name','count_views','count_comments','messages.created_at','messages.updated_at')
+                        ->paginate(10);
+        
+        $data = [
+            'messages' => $messages,
+            'category' => $category
+        ];
+      
+        return view('categories.result', $data);
     }
 }

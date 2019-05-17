@@ -2,20 +2,8 @@
 
 @section('content')
 
-    <div class="p-home_menu pt-1">
-        <a class="btn p-home_menuItem p-1 pl-2 mb-1 p-home_menuItem-active" style='text-align:center;' href="/messages/search">
-            <span class="fa fa-fw fa-list-ul mr-1of2"></span>タイムライン
-        </a>
-        <a class="btn p-home_menuItem p-1 pl-2 mb-1" href="/">
-            <span class="fa fa-fw fa-list-ul mr-1of2"></span>コメント順
-        </a>
-        <a class="btn p-home_menuItem p-1 pl-2 mb-1" href="/categories">
-            <span class="fa fa-fw fa-tags mr-1of2"></span>カテゴリ
-        </a>
-    </div>
-                        
     <div class="board-heading">
-        <h2 class="board-title">部屋一覧（タイムライン）</h2>
+        <h2 class="board-title">{{$user->name}} さんの部屋（新着順）</h2>
         {!! link_to_route('messages.create', '＋作成', null, ['class' => 'btn board-heading-btn']) !!}
     </div>
     <div class="board-body">

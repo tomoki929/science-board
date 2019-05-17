@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Message;
 use App\View;
 use App\Count_comment;
+use App\Categorie;
 
 
 class MessagesController extends Controller
@@ -37,9 +38,6 @@ class MessagesController extends Controller
                         ->orderBy('count_comments', 'desc')
                         ->select('messages.id','content','image_name','count_views','count_comments','messages.created_at','messages.updated_at')
                         ->paginate(10);
-        
-//        var_dump($messages);
-//        exit;
 
        ################################################################################        
 //        $messages = $query->orderBy('created_at', 'DESC')->paginate(10);
@@ -82,9 +80,12 @@ class MessagesController extends Controller
 //            'keyword' => $keyword
 //        ];
         
+        $categories = Categorie::all();
+        
         $data = [
             'messages' => $messages,
-            'keyword' => $keyword
+            'keyword' => $keyword,
+            'categories' => $categories
         ];
 
         return view('messages.index', $data);
@@ -125,12 +126,14 @@ class MessagesController extends Controller
     }
     
     public function store(Request $request)
-    {
+    {   
         $filename = $request->file->store('public/img');
         
         $message = new Message;
         $message->content = $request->content;
         $message->image_name = basename($filename);
+        $message->user_id = \Auth::user()->id;
+        $message->category_id = $request->category_id;
         $message->save();
         $count_comments = new Count_comment();
         $count_comments->message_id = $message->id;
