@@ -4,7 +4,7 @@
                         
     <div class="board-heading">
         <h2 class="board-title">{{ $message->content }}</h2>
-        <a href="/" class="btn board-heading-btn"> ↩ 戻る</a>
+        <a class="btn board-heading-btn" href=<?php echo url("/") ?>> ↩ 戻る</a>
     </div>
     <div class="board-body">
         
@@ -24,7 +24,7 @@
                         <?php if( $comment->image_name !== '' ) { ?>
                         <img class="image" src="{{ asset('storage/img/' .  $comment->image_name) }}" width="200px" height="200px" alt="画像無し">
                         <?php } ?>
-                        <p>{{ $comment->comment }}</p>
+                        <pre>{{ $comment->comment }}</pre>
                     </div>
                 @endforeach
             @endif

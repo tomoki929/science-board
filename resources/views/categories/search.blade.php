@@ -10,7 +10,7 @@
         @if (count($categories) > 0)
         <ul>
             @foreach ($categories as $category)
-                <a href='/categories/{{$category->id}}'>
+                <a href=<?php echo url("/categories/{$category->id}") ?>>
                     <li style="font-size:20px;">{{ $category->name }}</li>
                 </a>
             @endforeach

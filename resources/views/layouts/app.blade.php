@@ -8,8 +8,8 @@
         <title>message-board</title>
         
         <!-- css -->
-        <link rel="stylesheet" type="text/css" href="/css/board_temp.css">
-        <link rel="stylesheet" type="text/css" href="/css/board_index.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/board_temp.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/board_index.css') }}">
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">        

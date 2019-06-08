@@ -8,7 +8,7 @@
                     <span class='icon-bar'></span>
                     <span class='icon-bar'></span>
                 </button>
-                <a class='navbar-brand' href='/'>科学ちゃんねる</a>
+                <a class='navbar-brand' href=<?php echo url("/") ?>>科学ちゃんねる</a>
                 <!--↓↓ 検索フォーム ↓↓-->
                 <?php if(!isset($keyword)){$keyword = "";} ?>
                 <form action="{{url('/')}}" style='display:inline-block;width:60%;margin-top:13px'>
