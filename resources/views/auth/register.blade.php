@@ -2,38 +2,28 @@
 
 @section('content')
 
-    <div class="board-heading">
-        <h2 class="board-title">新規登録</h2>
-    </div>
-    <div class="board-body">
-        <div class='row'>
-            <div class='col-md-6 col-md-offset-3'>
+    <div class="topic-list">
+        <div class="form-wrap form form-comment">
+            {!! Form::open(['route' => 'signup.post']) !!}
+                {!! csrf_field() !!}
+                <div class="form-head flc" 　id="topics_comment">
+                    <p>新規登録</p>
+                </div>
+                <div class="">
+                    <p>名前</p>
+                    <input type="text" name="name" placeholder="">
+                    <p>メールアドレス</p>
+                    <input type="text" name="email" placeholder="">
+                    <p>パスワード</p>
+                    <input type="text" name="password" placeholder="">
+                    <p>パスワード確認</p>
+                    <input type="text" name="password_confirmation" placeholder="">
+                </div>
+                <input id="submit" type="submit" value="登録" class="btn btn-positive">
+            {!! Form::close() !!}
 
-                {!! Form::open(['route' => 'signup.post']) !!}
-                    {!! csrf_field() !!}
-                    <div class='form-group'>
-                        {!! Form::label('name', '名前') !!}
-                        {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-                    </div>
-                    <div class='form-group'>
-                        {!! Form::label('email', 'メールアドレス') !!}
-                        {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
-                    </div>
-                    <div class='form-group'>
-                        {!! Form::label('password', 'パスワード') !!}
-                        {!! Form::password('password', ['class' => 'form-control']) !!}
-                    </div>
-                    <div class='form-group'>
-                        {!! Form::label('password_confirmation', 'パスワード確認') !!}
-                        {!! Form::password('password_confirmation',  ['class' => 'form-control']) !!}
-                    </div>
-
-                    {!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}
-                {!! Form::close() !!}
-
-            </div>
+            <p>{!! link_to_route('signup.get', '新規登録はこちら') !!}</p>
         </div>
-        <div class="clearfix" style='margin-bottom: 20px'></div>
     </div>
 
 @endsection

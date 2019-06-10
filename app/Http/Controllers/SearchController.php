@@ -35,12 +35,53 @@ class SearchController extends Controller
             'keyword' => $keyword
         ];
 
-        return view('messages.search', $data);
+        return view('messages.timeline', $data);
+    }
+
+    public function service()
+    { 
+        return view('messages.service');
+    }
+
+    public function search()
+    { 
+        return view('categories.search');
+    }
+
+    public function search_result(Request $request)
+    {
+        #キーワード受け取り
+        $keyword = $request->input('keyword');
+
+        #クエリ生成
+        $query = Message::query();
+
+        #もしキーワードがあったら
+        if(!empty($keyword))
+        {
+          $query->where('content','like','%'.$keyword.'%');
+        }
+
+        $messages = $query
+                        ->join('views', 'messages.id', '=', 'views.message_id')
+                        ->join('count_comments', 'messages.id', '=', 'count_comments.message_id')
+                        ->orderBy('count_comments', 'desc')
+                        ->select('messages.id','content','image_name','count_views','count_comments','messages.created_at','messages.updated_at')
+                        ->paginate(10);
+        
+        $categories = Categorie::all();
+        
+        $data = [
+            'messages' => $messages,
+            'keyword' => $keyword,
+            'categories' => $categories
+        ];
+
+        return view('categories.search_result', $data);
     }
     
-    public function search()
-    {
-        
+    public function category()
+    {        
         $categories = Categorie::all();
         
         $data = [

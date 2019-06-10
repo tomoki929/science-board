@@ -37,7 +37,7 @@ class MessagesController extends Controller
                         ->join('count_comments', 'messages.id', '=', 'count_comments.message_id')
                         ->orderBy('count_comments', 'desc')
                         ->select('messages.id','content','image_name','count_views','count_comments','messages.created_at','messages.updated_at')
-                        ->paginate(10);
+                        ->take(100)->get();
 
        ################################################################################        
 //        $messages = $query->orderBy('created_at', 'DESC')->paginate(10);
@@ -127,8 +127,13 @@ class MessagesController extends Controller
     
     public function store(Request $request)
     {   
-        $filename = $request->file->store('public/img');
+        $this->validate($request, [
+            'content' => 'required|max:255',
+        ]);
         
+        if ($request->image !== null) $filename = $request->image->store('public/img');
+        if ($request->image == null) $filename = '';
+
         $message = new Message;
         $message->content = $request->content;
         $message->image_name = basename($filename);

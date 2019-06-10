@@ -22,7 +22,10 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 // 未ログインユーザーでも部屋一覧と詳細ページのみ閲覧可能
 Route::get('/', 'MessagesController@index');
-Route::get('messages/search', 'SearchController@index');
+Route::get('messages/timeline', 'SearchController@index');
+Route::get('categories/search', 'SearchController@search');
+Route::get('categories/search_result/', 'SearchController@search_result');
+Route::get('/messages/service', 'SearchController@service');
 
 // マイページ
 Route::middleware(['auth'])->group(function () {
@@ -34,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mypage', 'UsersController@index')->name('users.index');
 });
 
-Route::get('categories', 'SearchController@search');
+Route::get('categories', 'SearchController@category');
 Route::get('categories/{id}', 'SearchController@result');
 
 Route::post('comments', 'CommentsController@store')->name('comments.store');

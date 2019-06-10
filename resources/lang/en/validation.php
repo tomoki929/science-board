@@ -55,7 +55,8 @@ return [
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
         'file'    => 'The :attribute may not be greater than :max kilobytes.',
-        'string'  => 'The :attribute may not be greater than :max characters.',
+        // 'string'  => 'The :attribute may not be greater than :max characters.',
+        'string'  => ':attributeは:max文字を超えないでください',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
     'mimes'                => 'The :attribute must be a file of type: :values.',
@@ -125,6 +126,8 @@ return [
         'name'  => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'content' => '部屋名',
+        'comment' => 'コメント'
         // add-end
     ],
 

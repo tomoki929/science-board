@@ -2,38 +2,41 @@
 
 @section('content')
 
-    <div class="p-home_menu pt-1">
-        <a class="btn p-home_menuItem p-1 pl-2 mb-1 p-home_menuItem-active" style='text-align:center;' href=<?php echo url("/messages/search") ?> >
-            <span class="fa fa-fw fa-list-ul mr-1of2"></span>タイムライン
-        </a>
-        <a class="btn p-home_menuItem p-1 pl-2 p mb-1" href=<?php echo url("/") ?>>
-            <span class="fa fa-fw fa-list-ul mr-1of2"></span>コメント順
-        </a>
-        <a class="btn p-home_menuItem p-1 pl-2 mb-1" href=<?php echo url("/categories") ?>>
-            <span class="fa fa-fw fa-tags mr-1of2"></span>カテゴリ
-        </a>
+    <div class="btn-wrap"><a href=<?php echo url("/messages/create") ?> class="btn btn-positive">部屋を作成する</a></div>
+
+    <div class="wrap flc">
+        <div class="main">
+            <div class="topic-list">
+                <div class="topic-header">
+                    <div class="main">
+                        <h1 style="line-height: 30px;">人気トピック</h1>
+                    </div>
+                </div>
+                <ul class="topic-items" style="margin-bottom: 0;">
+                    @if (count($messages) > 0)
+                        @foreach ($messages as $key=>$message)
+                            <a href="/messages/{{$message->id}}" class="article-box" style="background-color: white;">
+                                <span class="order_badge"></span>
+                                <span class="order order_value">{{ $key + 1 }}<span class="order_unit">位</span></span>
+                                <h3 class="title">{{ $message->content }}</h3>
+                                <div class="count">
+                                    <span class="comment">{{ $message->count_comments }}コメント</span>
+                                    <span class="count_views">{{ $message->count_views }}閲覧</span>
+                                </div>
+                                <img class="image" src="{{ asset('storage/img/' .  $message->image_name) }}" width="60px" height="60px" alt="no image">
+                            </a>
+                        @endforeach
+                    @endif
+                    <div class="clearfix" style="clear: both;"></div>
+                </ul>
+            </div>
+        </div>
     </div>
-                        
-    <div class="board-heading">
-        <h2 class="board-title">部屋一覧（コメント順）</h2>
-        {!! link_to_route('messages.create', '＋作成', null, ['class' => 'btn board-heading-btn']) !!}
-    </div>
-    <div class="board-body">
-        @if (count($messages) > 0)
-            @foreach ($messages as $message)
-                <a href=<?php echo url("/messages/{$message->id}") ?> class="article-box" style="background-color: white;">
-                    <h3 class="title">{{ $message->content }}</h3>
-                    <time class="date" datetime="" style="">
-                        <div style='padding-left:10px;text-align:left'>コメント数：<span style='color:white;font-weight:bold;'>{{ $message->count_comments }}</span></div>
-                        <div style='padding-left:10px;text-align:left'>閲覧数：<span style='color:white;font-weight:bold;'>{{ $message->count_views }}</span></div>
-                    </time>
-                    <?php if( $message->image_name=='' ) { $message->image_name = 'science.jpg'; } ?>
-                    <img class="image" src="{{ asset('storage/img/' .  $message->image_name) }}" width="100px" height="100px" alt="no image">
-                </a>
-            @endforeach
-        @endif
-        <div class="clearfix"></div>
-        <div style="text-align:center;font-size:10px">{{ $messages->links() }}</div>
-    </div>
+    <style>
+    .pagination {
+        display: inline-block;
+        margin: 0 0 20px 0;
+    }
+    </style>
 
 @endsection

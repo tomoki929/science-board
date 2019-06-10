@@ -22,9 +22,9 @@ class CommentsController extends Controller
         if($request->file !== null){
             $filename = $request->file->store('public/img');
             $image_name = basename($filename);
-        } else {
-            $image_name = '';
-        }
+        } 
+
+        if($request->file == null) $image_name = '';
         
         $comment = new Comment();
         $comment->message_id = $request->message_id;

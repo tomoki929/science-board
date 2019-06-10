@@ -7,7 +7,7 @@
             <div class="topic-list">
                 <div class="topic-header">
                     <div class="main">
-                        <h1 style="line-height: 30px;">{{ $category->name }}系の部屋</h1>
+                        <h1 style="line-height: 30px;">「{{ $keyword }}」の検索結果</h1>
                     </div>
                 </div>
                 <ul class="topic-items" style="margin-bottom: 0;">
