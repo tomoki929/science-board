@@ -9,8 +9,8 @@
                 <a href="" class="article-box" style="background-color: white;">
                     <h3 class="title">{{ $message->content }}</h3>
                     <div class="count">
-                        <span class="comment">{{ $message->count_comments }}コメント</span>
-                        <span class="count_views">{{ $message->count_views }}閲覧</span>
+                        <span class="comment">{{ $message->count_comments }}</span>
+                        <span class="count_views">{{ $message->count_views }}</span>
                     </div>
                     <img class="image" src="{{ asset('storage/img/' .  $message->image_name) }}" width="60px" height="60px" alt="no image">
                 </a>
@@ -18,9 +18,9 @@
             <div class="topic-item flc" id="comment2" style="border-bottom: 1px solid #fff;">
                 <ul>
                     @if (count($comments) > 0)
-                        @foreach ($comments as $comment)
+                        @foreach ($comments as $key=>$comment)
                         <li class="comment-item">
-                            <p class="topic-item-info">{{ $comment->name }}<a href="" rel="nofollow">{{ $comment->created_at }}</a>
+                            <p class="topic-item-info">{{ $key + 1 }}. {{ $comment->name }}<a href="" rel="nofollow">{{ $comment->created_at }}</a>
                             </p>
                             <?php if( $comment->image_name !== '' ) { ?>
                                 <img class="img-fluid" src="{{ asset('storage/img/' .  $comment->image_name) }}" width="200px" height="200px" alt="no image">

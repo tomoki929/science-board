@@ -1,5 +1,5 @@
 <div id="footer" class="footer" style="background-color:#3a6b9c;">
-    <p><a href="/" style="display:block;margin-bottom:10px;font-size: 15px;">科学ちゃんねる</a><p>
+    <p><a href="" style="display:block;margin-bottom:10px;font-size: 15px;">科学ちゃんねる</a><p>
     <p><a href="">運営会社</a>&nbsp;|&nbsp;<a href="">お問い合わせ</a>&nbsp;|&nbsp;<a href="">よくある質問</a>&nbsp;|&nbsp;<a href="">利用規約</a></p>
 </div>
 

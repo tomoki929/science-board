@@ -21,7 +21,7 @@
                         <p>部屋名</p>
                     </div>
                     <div class="form-main">
-                        <textarea id="textarea" name="content" placeholder="部屋名や話したい話題を書きましょう"></textarea>
+                        <textarea id="textarea" maxlength="34" name="content" placeholder="部屋名や話したい話題を書きましょう"></textarea>
                         </div>
                         <div class="form-images flc">
                             <div class="add-image"><i class="fas fa-camera"></i>

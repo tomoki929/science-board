@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#3a6b9c;line-height:20px;display: block;margin-bottom:0px;border-radius:0;">
     <div class="header-left">
-        <a href="/">科学ちゃんねる</a>
+        <a href=<?php echo url("/") ?>>科学ちゃんねる</a>
     </div>
     @if (Auth::check())
         <div class="header-right">
